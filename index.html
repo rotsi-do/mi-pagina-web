@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edu-sex · Plantel Villa Victoria</title>
+<style>
+  :root{
+    --fondo:#fff1f6; --texto:#2a1860; --morado:#6d4bd8; --morado-osc:#2a1860;
+    --rosa:#ff9ac4; --lila:#b79bff; --celeste:#7fd0ff; --durazno:#ffb86b; --amarillo:#ffe27a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI",system-ui,sans-serif}
+  body{background:var(--fondo);color:var(--texto);line-height:1.4}
+  img{max-width:100%;display:block}
+  .contenedor{max-width:1120px;margin:0 auto;padding:0 18px}
+
+  /* Barra */
+  .barra{display:flex;align-items:center;gap:12px;padding:14px 0}
+  .logo{width:56px;height:56px;border-radius:50%;background:#fff;border:3px solid #fff;box-shadow:0 4px 14px rgba(109,75,216,.3);overflow:hidden;flex-shrink:0}
+  .logo img{width:100%;height:100%;object-fit:cover}
+  .marca{font-weight:900;font-size:1.15rem;line-height:1.15}
+  .marca small{display:block;font-weight:700;font-size:.8rem;color:var(--morado)}
+  .sesion-barra{margin-left:auto;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.88rem;font-weight:700;color:var(--morado)}
+  .sesion-barra a{color:var(--morado-osc);background:#fff;border-radius:999px;padding:7px 16px;text-decoration:none;box-shadow:0 3px 0 rgba(109,75,216,.18)}
+  .sesion-barra a:hover{background:var(--lila)}
+
+  /* Héroe */
+  .heroe{position:relative;overflow:hidden;border-radius:38px;padding:44px 40px;
+    background:linear-gradient(135deg,var(--rosa) 0%,var(--lila) 55%,var(--celeste) 100%);
+    display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center}
+  .heroe::before,.heroe::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+  .heroe::before{width:320px;height:320px;top:-130px;left:-90px;background:rgba(255,255,255,.35)}
+  .heroe::after{width:200px;height:200px;bottom:-90px;right:30%;background:rgba(255,226,122,.55)}
+  .heroe > *{position:relative;z-index:1}
+  .etiqueta{display:inline-block;background:#fff;color:var(--morado);font-weight:900;font-size:.85rem;padding:6px 16px;border-radius:999px;box-shadow:0 3px 0 rgba(109,75,216,.2);margin-bottom:14px}
+  h1{font-size:clamp(3rem,8vw,5.4rem);line-height:.95;font-weight:900;letter-spacing:-1px;margin-bottom:14px}
+  h1 span{display:inline-block;background:#fff;border-radius:18px;padding:2px 14px;transform:rotate(-2deg);box-shadow:0 5px 0 rgba(109,75,216,.2)}
+  .lema{font-size:1.25rem;font-weight:800;margin-bottom:6px}
+  .frase{font-size:1.05rem;font-weight:600}
+  .boton{display:inline-block;margin-top:22px;padding:15px 34px;border-radius:999px;background:var(--morado);color:#fff;font-weight:900;font-size:1.1rem;text-decoration:none;box-shadow:0 6px 0 var(--morado-osc);transition:transform .15s,box-shadow .15s}
+  .boton:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--morado-osc)}
+  .boton:active{transform:translateY(3px);box-shadow:0 2px 0 var(--morado-osc)}
+  .nota-cta{margin-top:12px;font-size:.88rem;font-weight:700}
+
+  .collage{display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative}
+  .foto{border-radius:26px;border:5px solid #fff;overflow:hidden;background:#fff;box-shadow:0 12px 24px rgba(42,24,96,.25);transition:transform .3s}
+  .foto img{width:100%;height:100%;object-fit:cover}
+  .foto.grande{grid-column:1/3;aspect-ratio:16/10;transform:rotate(1.5deg)}
+  .foto.a,.foto.b{aspect-ratio:1/1}
+  .foto.a{transform:rotate(-3deg)}.foto.b{transform:rotate(2.5deg)}
+  .foto:hover{transform:rotate(0) scale(1.02)}
+  .pegatina{position:absolute;width:64px;height:64px;border-radius:50%;background:var(--amarillo);display:flex;align-items:center;justify-content:center;font-size:2.1rem;box-shadow:0 6px 14px rgba(42,24,96,.25)}
+  .p1{top:-20px;right:-8px}.p2{bottom:36%;left:-18px;background:#fff}
+
+  /* Secciones */
+  .bloque{margin-top:48px}
+  .titulo-seccion{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:900;margin-bottom:18px}
+
+  /* Ruta con fotos */
+  .ruta{background:var(--morado);border-radius:38px;padding:38px 34px}
+  .ruta .titulo-seccion{color:#fff}
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .tile{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:3/4;background:var(--lila);box-shadow:0 8px 0 rgba(0,0,0,.18);transition:transform .2s}
+  .tile:nth-child(2){background:var(--rosa)}.tile:nth-child(3){background:var(--celeste)}.tile:nth-child(4){background:var(--durazno)}
+  .tile:hover{transform:translateY(-6px) rotate(-1deg)}
+  .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .tile .etq{position:absolute;left:12px;right:12px;bottom:12px;background:#fff;border-radius:18px;padding:9px 12px;display:flex;align-items:center;gap:10px;font-weight:900;font-size:1rem}
+  .tile .num{width:30px;height:30px;border-radius:50%;background:var(--morado);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+
+  /* Burbujas de color */
+  .burbujas{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+  .burbuja{border-radius:30px;padding:24px 14px;text-align:center;font-weight:900;font-size:1.05rem;box-shadow:0 7px 0 rgba(42,24,96,.14);transition:transform .2s}
+  .burbuja:hover{transform:translateY(-5px) scale(1.03)}
+  .burbuja .em{display:block;font-size:2.8rem;margin-bottom:6px}
+  .c1{background:var(--rosa)}.c2{background:var(--celeste)}.c3{background:var(--lila)}.c4{background:var(--durazno)}.c5{background:var(--amarillo)}.c6{background:#c9f0c0}
+  .c6{background:#ffc2e6}
+
+  /* Equipo */
+  .equipo{background:linear-gradient(135deg,var(--amarillo),var(--durazno) 55%,var(--rosa));border-radius:38px;padding:34px}
+  .personas{display:flex;flex-wrap:wrap;gap:12px}
+  .persona{display:flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:7px 20px 7px 7px;font-weight:800;box-shadow:0 4px 0 rgba(42,24,96,.16)}
+  .ini{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900}
+
+  footer{text-align:center;padding:30px 0 28px;color:var(--morado);font-weight:700;font-size:.9rem}
+
+  a:focus-visible{outline:3px solid var(--morado);outline-offset:3px}
+  @media (prefers-reduced-motion:no-preference){
+    .pegatina{animation:flota 4s ease-in-out infinite}.p2{animation-delay:-2s}
+    @keyframes flota{50%{transform:translateY(-9px)}}
+  }
+  @media (max-width:880px){
+    .heroe{grid-template-columns:1fr;padding:32px 22px}
+    .tiles{grid-template-columns:repeat(2,1fr)}
+    .ruta{padding:28px 18px}
+    .equipo{padding:26px 18px}
+  }
+  @media (max-width:420px){.persona{font-size:.9rem}}
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+  <div class="barra">
+    <div class="logo"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNQ3VMfQySk9nmjsA-rmown0yQLCHeQHEmL5Mos6XG0CVAzgaN-f7jCEFpNV5j_jij_7QXpq8c7VXq0wIdQoEKHBilBZWnd5sHvw4WgEE3dfg75qot8ME2CroAHWvxwg/s1600/*" alt="Logo del plantel" onerror="this.remove()"></div>
+    <div class="marca">Plantel Villa Victoria<small>Embarazo adolescente</small></div>
+  </div>
+
+  <!-- HÉROE -->
+  <header class="heroe">
+    <div>
+      <span class="etiqueta">🌸 Bienvenido/a</span>
+      <h1><span>Edu-sex</span></h1>
+      <p class="lema">Información clara y sin juicios.</p>
+      <p class="frase">No estás sola ni solo. 💜</p>
+      <a class="boton" id="btnExplorar" href="usuarios/bienvenidausuario.html">Entrar</a>
+      <p class="nota-cta">Entra directo, sin registro.</p>
+    </div>
+
+    <div class="collage">
+      <div class="foto grande"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqDcEF1YWh3RJGCy425UgBuyRoBjD_elBQ7DgrshMNr3s3ZzJRsNOjzqbT&s=10" alt="Imagen del plantel educativo" onerror="this.remove()"></div>
+      <div class="foto a"><img src="https://i.pinimg.com/736x/98/69/39/986939329ff423418de06f2decb1e74f.jpg" alt="" onerror="this.remove()"></div>
+      <div class="foto b"><img src="https://i.pinimg.com/736x/45/58/8e/45588e324778df9cc0f23e2f9e7ebf71.jpg" alt="" onerror="this.remove()"></div>
+      <span class="pegatina p1" aria-hidden="true">💜</span>
+      <span class="pegatina p2" aria-hidden="true">🎓</span>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- QUÉ ENCONTRARÁS -->
+    <section class="bloque">
+      <h2 class="titulo-seccion">En la página encontrarás</h2>
+      <div class="burbujas">
+        <div class="burbuja c3"><span class="em" aria-hidden="true">ℹ️</span>Infórmate</div>
+        <div class="burbuja c1"><span class="em" aria-hidden="true">🤖</span>Chatbot</div>
+        <div class="burbuja c2"><span class="em" aria-hidden="true">🔢</span>Datos y cifras</div>
+        <div class="burbuja c4"><span class="em" aria-hidden="true">🏥</span>Centros de apoyo</div>
+        <div class="burbuja c5"><span class="em" aria-hidden="true">🧠</span>Juegos</div>
+        <div class="burbuja c6"><span class="em" aria-hidden="true">⭐</span>Reseñas</div>
+      </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section class="bloque equipo">
+      <h2 class="titulo-seccion">Desarrolladores</h2>
+      <div class="personas">
+        <div class="persona" title="Andrea Roxxana Carmona de los Santos"><span class="ini" style="background:var(--rosa)">AC</span>Andrea Carmona</div>
+        <div class="persona" title="Carmen Aurora Flores Gonzalez"><span class="ini" style="background:var(--celeste)">CF</span>Carmen Flores</div>
+        <div class="persona" title="Ian Yael Franco Gaspar"><span class="ini" style="background:var(--lila)">IF</span>Ian Franco</div>
+        <div class="persona" title="Maria Jose Gomora Ruiz"><span class="ini" style="background:var(--durazno)">MG</span>María José Gomora</div>
+        <div class="persona" title="Danna Paola Velazquez Iniesta"><span class="ini" style="background:var(--rosa)">DV</span>Danna Velázquez</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Proyecto educativo de prevención del embarazo adolescente · Tu plantel, tu espacio seguro.</footer>
+</div>
+
+</body>
+</html>
